@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Elevate Trading</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+#lockScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+}
+
+.lockBox{
+
+    width:90%;
+
+    max-width:350px;
+
+    background:#0d0d0d;
+
+    border:1px solid rgba(255,215,0,.25);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    text-align:center;
+}
+
+.lockBox h1{
+
+    color:gold;
+
+    margin-bottom:15px;
+}
+
+.lockBox p{
+
+    color:#ccc;
+
+    margin-bottom:15px;
+}
+
+.lockBox input{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#111;
+
+    color:white;
+
+    padding:0 15px;
+}
+
+.lockBox button{
+
+    width:100%;
+
+    height:55px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:gold;
+
+    color:black;
+
+    font-weight:900;
+}
+
+#errorMsg{
+
+    color:#ff4444;
+
+    margin-top:10px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    min-height:100vh;
+    color:white;
+}
+
+.wrapper{
+    max-width:450px;
+    margin:auto;
+    padding:15px;
+}
+
+.hero{
+
+    margin-top:20px;
+
+    background:linear-gradient(
+    135deg,
+    rgba(255,215,0,.15),
+    rgba(255,255,255,.03)
+    );
+
+    border-radius:30px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,215,0,.2);
+}
+
+.logo{
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    background:linear-gradient(
+    135deg,
+    gold,
+    #fff2a8
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:40px;
+}
+
+.title{
+
+    margin-top:15px;
+
+    font-size:30px;
+
+    font-weight:900;
+
+    color:gold;
+}
+
+.subtitle{
+
+    margin-top:8px;
+
+    color:#aaa;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+}
+.panel{
+
+    margin-top:20px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,215,0,.15);
+
+    border-radius:30px;
+
+    padding:20px;
+}
+
+.panel h2{
+
+    color:gold;
+
+    margin-bottom:20px;
+
+    text-align:center;
+}
+
+.generate-btn{
+
+    width:100%;
+
+    height:65px;
+
+    margin-top:15px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #FFD700,
+    #FFF2A8
+    );
+
+    color:#000;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 0 20px rgba(255,215,0,.3);
+}
+
+.signal-card{
+
+    margin-top:20px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(255,215,0,.15);
+
+    border-radius:30px;
+
+    padding:20px;
+
+    text-align:center;
+}
+
+.signal-title{
+
+    color:gold;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+.signal-box{
+
+    height:110px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:42px;
+
+    font-weight:900;
+
+    background:#111;
+}
+
+.call{
+
+    background:
+    linear-gradient(
+    135deg,
+    #00ff88,
+    #00bb66
+    );
+
+    color:#fff;
+}
+
+.put{
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff4444,
+    #bb2222
+    );
+
+    color:#fff;
+}
+
+.signal-info{
+
+    margin-top:15px;
+
+    color:#ccc;
+
+    line-height:28px;
+}
+
+.field{
+
+    margin-bottom:15px;
+}
+
+.field label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#ccc;
+}
+
+.field select{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    outline:none;
+
+    background:#111;
+
+    color:white;
+
+    border-radius:15px;
+
+    padding:0 15px;
+}
+
+.clock{
+
+    margin-top:15px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    color:gold;
+
+    background:#111;
+
+    padding:15px;
+
+    border-radius:15px;
+}
+
+</style>
+
+</head>
+
+<div id="lockScreen">
+
+    <div class="lockBox">
+
+        <h1>🔐 Elevate Trading</h1>
+
+        <p>Enter Password</p>
+
+        <input
+        type="password"
+        id="passwordInput"
+        placeholder="Password">
+
+        <button id="unlockBtn">
+            UNLOCK
+        </button>
+
+        <div id="errorMsg"></div>
+
+    </div>
+
+</div>
+
+<div id="mainApp" style="display:none;">
+
+<body>
+
+<div class="wrapper">
+
+    <div class="hero">
+
+        <div class="logo">
+            👑
+        </div>
+
+        <div class="title">
+            ELEVATE TRADING
+        </div>
+
+        <div class="subtitle">
+            ROYAL SIGNAL SYSTEM 2026
+        </div>
+
+    </div>
+    
+<div class="panel">
+
+    <h2>Trading Control</h2>
+
+    <div class="field">
+
+        <label>Broker</label>
+
+        <select id="broker">
+            <option>Quotex</option>
+            <option>Binomo</option>
+            <option>Pocket Option</option>
+        </select>
+
+    </div>
+
+    <div class="field">
+
+        <label>Market</label>
+
+        <select id="market">
+            <option>EURUSD</option>
+            <option>GBPUSD</option>
+            <option>GBPCAD</option>
+            <option>USDJPY</option>
+            <option>CADJPY</option>
+            <option>AUDJPY</option>
+        </select>
+
+    </div>
+
+    <div class="field">
+
+        <label>Timeframe</label>
+
+        <select id="timeframe">
+            <option value="1">1 Minute</option>
+            <option value="2">2 Minute</option>
+            <option value="5">5 Minute</option>
+            <option value="15">15 Minute</option>
+        </select>
+
+    </div>
+
+    <div id="clock" class="clock">
+        00:00:00
+    </div>
+    
+    <button id="generateBtn" class="generate-btn">
+    GENERATE SIGNAL
+</button>
+
+</div>
+
+<div class="signal-card">
+
+    <div class="signal-title">
+        CURRENT SIGNAL
+    </div>
+
+    <div id="signalBox" class="signal-box">
+        WAIT
+    </div>
+
+    <div id="signalInfo" class="signal-info">
+
+        Market : --<br>
+        Timeframe : --<br>
+        Status : Waiting
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
+<script>
+
+const API_KEY =
+"e4d1a31ba8224449a266f6e6852bd491";
+
+document
+.getElementById("unlockBtn")
+.addEventListener("click", checkPassword);
+
+function updateClock(){
+
+    const now = new Date();
+
+    document.getElementById("clock").innerHTML =
+    now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+const btn =
+document.getElementById("generateBtn");
+
+const signalBox =
+document.getElementById("signalBox");
+
+const signalInfo =
+document.getElementById("signalInfo");
+
+let signalRunning = false;
+
+btn.addEventListener("click",()=>{
+
+    if(signalRunning) return;
+
+    signalRunning = true;
+
+    btn.disabled = true;
+
+    btn.innerHTML = "ANALYZING...";
+
+    signalBox.className =
+    "signal-box";
+
+    signalBox.innerHTML =
+    "SCAN";
+
+    setTimeout(()=>{
+
+        generateSignal();
+
+    },2000);
+
+});
+
+async function checkPassword() {
+
+    const response = await fetch("password.txt");
+    const realPassword = (await response.text()).trim();
+
+    const entered =
+    document.getElementById("passwordInput").value;
+
+    if(entered === realPassword){
+
+        document.getElementById("lockScreen").style.display = "none";
+        document.getElementById("mainApp").style.display = "block";
+
+    } else {
+
+        document.getElementById("errorMsg").innerHTML = "Wrong Password";
+
+    }
+}
+
+async function generateSignal(){
+
+    const market =
+document.getElementById("market").value;
+
+const symbolMap = {
+   "EURUSD":"EUR/USD",
+   "GBPUSD":"GBP/USD",
+   "GBPCAD":"GBP/CAD",
+   "USDJPY":"USD/JPY",
+   "CADJPY":"CAD/JPY",
+   "AUDJPY":"AUD/JPY"
+};
+
+const symbol = symbolMap[market];
+
+    const url =
+    `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=1min&outputsize=100&apikey=${API_KEY}`;
+
+    try{
+
+    const response =
+    await fetch(url);
+
+    const data =
+    await response.json();
+
+    if(!data.values){
+
+        signalBox.innerHTML =
+        "NO DATA";
+
+        btn.disabled = false;
+        btn.innerHTML =
+        "GENERATE SIGNAL";
+
+        signalRunning = false;
+
+        return;
+    }
+
+    const candles =
+data.values.reverse();
+
+const response =
+await fetch(
+"/.netlify/functions/getsignal",
+{
+    method:"POST",
+
+    headers:{
+        "Content-Type":
+        "application/json"
+    },
+
+    body:JSON.stringify({
+        candles
+    })
+});
+
+const result =
+await response.json();
+
+signalBox.innerHTML =
+result.signal;
+
+signalInfo.innerHTML =
+`
+Signal : ${result.signal}<br>
+Strength : ${result.score}%
+`;
+
+btn.disabled=false;
+btn.innerHTML=
+"GENERATE SIGNAL";
+
+signalRunning=false;
+
+}
+catch(err){
+
+    signalBox.innerHTML =
+    "ERROR";
+
+    btn.disabled = false;
+
+    btn.innerHTML =
+    "GENERATE SIGNAL";
+
+    signalRunning = false;
+
+    console.log(err);
+}
+}
+
+function displaySignal(
+signal,
+score,
+ema9,
+ema21,
+ema50,
+rsi,
+trend,
+currentPrice
+){
+
+    const market =
+    document.getElementById("market").value;
+    
+    signalBox.className =
+    "signal-box";
+
+    if(signal==="CALL")
+        signalBox.classList.add(
+        "call"
+        );
+
+    if(signal==="PUT")
+        signalBox.classList.add(
+        "put"
+        );
+
+    signalBox.innerHTML =
+    signal;
+
+    signalInfo.innerHTML =
+    `
+    Market : ${market}<br>
+    Trend : ${trend}<br>
+    Current Price : ${currentPrice.toFixed(5)}<br>
+    Strength : ${score}%<br>
+    RSI : ${rsi.toFixed(1)}<br>
+    EMA9 : ${ema9.toFixed(5)}<br>
+    EMA21 : ${ema21.toFixed(5)}<br>
+    EMA50 : ${ema50.toFixed(5)}
+    `;
+}
+
+
+
+function startCooldown(minutes){
+
+    let seconds =
+    minutes * 60;
+
+    const timer =
+    setInterval(()=>{
+
+        seconds--;
+
+        btn.innerHTML =
+        `WAIT ${seconds}s`;
+
+        if(seconds <= 0){
+
+            clearInterval(timer);
+
+            btn.disabled = false;
+
+            btn.innerHTML =
+            "GENERATE SIGNAL";
+
+            signalRunning = false;
+
+            signalBox.className =
+            "signal-box";
+
+            signalBox.innerHTML =
+            "WAIT";
+
+            signalInfo.innerHTML =
+            `
+            Market : --<br>
+            Timeframe : --<br>
+            Status : Ready
+            `;
+
+        }
+
+    },1000);
+
+}
+
+</script>
+
+</body>
+</html>
